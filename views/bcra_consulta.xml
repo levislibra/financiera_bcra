@@ -1,0 +1,58 @@
+<openerp>
+  <data>
+    
+		<record model="ir.ui.view" id="bcra_consulta_tree">
+      <field name="name">financiera.bcra.consulta.tree</field>
+      <field name="model">financiera.bcra.consulta</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name" readonly="1"/>
+					<field name="identificacion"/>
+					<field name="peor_situacion"/>
+					<field name="monto_total"/>
+					<field name="company_id" groups="base.group_erp_manager"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="bcra_consulta_form">
+      <field name="name">financiera.bcra.consulta.form</field>
+      <field name="model">financiera.bcra.consulta</field>
+      <field name="arch" type="xml">
+        <form create="false">
+					<header>
+						<button string="Consultar" name="consultar_bcra" type="object" class="oe_highlight"/>
+						<button string="Consulta sql" name="consulta_bcra_sql" type="object" class="oe_highlight"/>
+					</header>
+          <sheet>
+            <group>
+              <group>
+								<field name="company_id" groups="base.group_erp_manager"/>
+								<field name="name" readonly="1"/>
+								<field name="identificacion" readonly="0"/>
+								<field name="peor_situacion" readonly="1"/>
+								<field name="monto_total" readonly="1"/>
+								<field name="detalle_por_banco" readonly="1" widget="html"/>
+							</group>
+							<group>
+							</group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="bcra_consulta_action">
+      <field name="name">Consulta BCRA</field>
+      <field name="res_model">financiera.bcra.consulta</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_ids" eval="[(5, 0, 0), 
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('bcra_consulta_tree')}), 
+        (0, 0, {'view_mode': 'form', 'view_id': ref('bcra_consulta_form')})]"/>
+    </record>
+
+		<menuitem name="Consutla BCRA" id="menu_bcra_action" parent="menu_bcra" 
+			action="bcra_consulta_action" sequence="5"/>
+
+  </data>
+</openerp>

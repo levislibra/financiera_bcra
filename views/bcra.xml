@@ -1,0 +1,49 @@
+<openerp>
+  <data>
+    
+		<record model="ir.ui.view" id="bcra_tree">
+      <field name="name">financiera.bcra.tree</field>
+      <field name="model">financiera.bcra</field>
+      <field name="arch" type="xml">
+        <tree create="false" delete="false">
+					<field name="name"/>
+					<field name="anio"/>
+					<field name="mes"/>
+        </tree>
+      </field>
+    </record>
+
+		<record model="ir.ui.view" id="bcra_form">
+      <field name="name">financiera.bcra.form</field>
+      <field name="model">financiera.bcra</field>
+      <field name="arch" type="xml">
+        <form create="false">
+          <sheet>
+            <group>
+              <group>
+								<field name="name" readonly="1"/>
+								<field name="anio"/>
+								<field name="mes"/>
+							</group>
+							<group>
+							</group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="bcra_action">
+      <field name="name">Base BCRA</field>
+      <field name="res_model">financiera.bcra.registro</field>
+      <field name="view_mode">tree</field>
+      <field name="view_ids" eval="[(5, 0, 0), 
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('bcra_tree')}),
+				(0, 0, {'view_mode': 'form', 'view_id': ref('bcra_form')})]"/>
+    </record>
+
+		<!-- <menuitem name="Consultas" id="menu_bcra_registro_action" parent="menu_bcra" 
+			action="bcra_registro_action" sequence="2"/> -->
+
+  </data>
+</openerp>
