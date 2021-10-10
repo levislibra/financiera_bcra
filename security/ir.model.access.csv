@@ -1,2 +1,13 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_financiera_bcra_financiera_bcra,financiera_bcra.financiera_bcra,model_financiera_bcra_financiera_bcra,,1,0,0,0
+
+user_financiera_bcra_config,financiera.bcra.config,model_financiera_bcra_config,financiera_bcra.user,1,1,1,0
+manager_financiera_bcra_config,financiera.bcra.config,model_financiera_bcra_config,financiera_bcra.manager,1,1,1,0
+
+user_financiera_bcra,financiera.bcra,model_financiera_bcra,financiera_bcra.user,1,1,1,0
+manager_financiera_bcra,financiera.bcra,model_financiera_bcra,financiera_bcra.manager,1,1,1,0
+
+user_financiera_bcra_registro,financiera.bcra.registro,model_financiera_bcra_registro,financiera_bcra.user,1,1,1,0
+manager_financiera_bcra_registro,financiera.bcra.registro,model_financiera_bcra_registro,financiera_bcra.manager,1,1,1,0
+
+user_financiera_bcra_consulta,financiera.bcra.consulta,model_financiera_bcra_consulta,financiera_bcra.user,1,1,1,0
+manager_financiera_bcra_consulta,financiera.bcra.consulta,model_financiera_bcra_consulta,financiera_bcra.manager,1,1,1,0

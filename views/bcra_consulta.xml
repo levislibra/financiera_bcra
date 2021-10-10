@@ -22,7 +22,6 @@
         <form create="false">
 					<header>
 						<button string="Consultar" name="consultar_bcra" type="object" class="oe_highlight"/>
-						<button string="Consulta sql" name="consulta_bcra_sql" type="object" class="oe_highlight"/>
 					</header>
           <sheet>
             <group>
@@ -52,7 +51,7 @@
     </record>
 
 		<menuitem name="Consutla BCRA" id="menu_bcra_action" parent="menu_bcra" 
-			action="bcra_consulta_action" sequence="5"/>
+			action="bcra_consulta_action" sequence="5" groups="financiera_bcra.user"/>
 
   </data>
 </openerp>

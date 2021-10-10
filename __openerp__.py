@@ -24,7 +24,8 @@
     # always loaded
     'data': [
 			'security/user_groups.xml',
-			# 'security/ir.model.access.csv',
+			'security/ir.model.access.csv',
+			'security/security.xml',
       'views/bcra_config.xml',
 			'views/bcra_consulta.xml',
 			'views/bcra.xml',

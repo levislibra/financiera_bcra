@@ -21,7 +21,7 @@
           <sheet>
             <group>
               <group>
-								<field name="name" readonly="1"/>
+								<field name="name"/>
 								<field name="anio"/>
 								<field name="mes"/>
 							</group>
@@ -41,9 +41,6 @@
         (0, 0, {'view_mode': 'tree', 'view_id': ref('bcra_tree')}),
 				(0, 0, {'view_mode': 'form', 'view_id': ref('bcra_form')})]"/>
     </record>
-
-		<!-- <menuitem name="Consultas" id="menu_bcra_registro_action" parent="menu_bcra" 
-			action="bcra_registro_action" sequence="2"/> -->
 
   </data>
 </openerp>

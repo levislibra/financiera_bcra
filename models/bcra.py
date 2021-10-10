@@ -17,6 +17,7 @@ class FinancieraBcra(models.Model):
 	], "Mes")
 	bcra_registro_ids = fields.One2many('financiera.bcra.registro', 'bcra_id', 'Registros')
 
+	@api.one
 	@api.onchange('anio', 'mes')
 	def onchange_anio_mes(self):
 		self.name = 'BCRA/'
@@ -35,6 +36,7 @@ class FinancieraBcraRegistro(models.Model):
 	fecha_informacion = fields.Char('Fecha de información')
 	tipo_identificacion = fields.Char('Tipo de identificación')
 	nro_identificacion = fields.Char('N° de identificación')
+	nro_dni = fields.Char('N° DNI')
 	actividad = fields.Char('Actividad')
 	situacion = fields.Char('Situación')
 	prestamos_total = fields.Char('Préstamos/Total')
@@ -59,6 +61,7 @@ class FinancieraBcraRegistro(models.Model):
 class FinancieraBcraConsulta(models.Model):
 	_name = 'financiera.bcra.consulta'
 
+	_order = 'id desc'
 	name = fields.Char("Nombre")
 	identificacion = fields.Char("Identificacion")
 	peor_situacion = fields.Integer("Peor situacion")
@@ -82,12 +85,13 @@ class FinancieraBcraConsulta(models.Model):
 
 	@api.one
 	def consultar_bcra(self):
+		result_dict = False
 		bcra_id = self.company_id.bcra_id.bcra_id
 		if bcra_id and self.identificacion:
 			bcra_registro_obj = self.pool.get('financiera.bcra.registro')
 			bcra_registro_ids = bcra_registro_obj.search(self.env.cr, self.env.uid, [
 				('bcra_id.id', '=', bcra_id.id),
-				('nro_identificacion', '=', self.identificacion),
+				"|", ('nro_identificacion', '=', self.identificacion), ('nro_dni', '=', self.identificacion)
 			])
 			bcra_registro_ids = bcra_registro_obj.browse(self.env.cr, self.env.uid, bcra_registro_ids)
 			peor_situacion = 0
